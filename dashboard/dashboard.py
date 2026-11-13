@@ -13,7 +13,7 @@ st.set_page_config(
 # Membaca data bersih yang sudah ada di folder dashboard
 @st.cache_data
 def load_data():
-    df = pd.read_csv("main_data.csv")
+    df = pd.read_csv("../data/main_data.csv")
     df["dteday"] = pd.to_datetime(df["dteday"])
     return df
 
