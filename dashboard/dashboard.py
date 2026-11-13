@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+from pathlib import Path
 
 # Mengatur tata letak halaman Streamlit
 st.set_page_config(
@@ -13,9 +14,9 @@ st.set_page_config(
 # Membaca data bersih yang sudah ada di folder dashboard
 @st.cache_data
 def load_data():
-    # Karena file csv ada di dalam folder yang sama dengan dashboard.py
-    df = pd.read_csv("main_data.csv")
-    df["dteday"] = pd.to_datetime(df["dteday"])
+    BASE_DIR=Path(__file__).resolve().parent
+    df=pd.read_csv(BASE_DIR/"main_data.csv")
+    df["dteday"]=pd.to_datetime(df["dteday"])
     return df
 
 df_day = load_data()
